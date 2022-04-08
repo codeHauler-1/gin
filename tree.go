@@ -503,6 +503,11 @@ walk: // Outer loop for walking the tree
 						i := len(*value.params)
 						*value.params = (*value.params)[:i+1]
 						val := path[:end]
+						// When param is empty
+						if val == "" {
+						    return
+						}
+						
 						if unescape {
 							if v, err := url.QueryUnescape(val); err == nil {
 								val = v
